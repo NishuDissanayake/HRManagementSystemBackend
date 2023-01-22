@@ -30,7 +30,66 @@ const EmployeeSchema = mongoose.Schema({
     EmpStartDate: {
         type: String,
         require: true,
-    }
+    },
+    BasicSalary: {
+        type: Number,
+        require: true
+    },
+    LossAmountPerLeave: {
+        type: Number,
+        default: 500
+    },
+    SalaryForMonth: [
+        {
+            Month: {
+                type: String,
+            },
+            PaidDate: {
+                type: String,
+            },
+            Additions: {
+                Reason: {
+                    type: String,
+                },
+                Amount: {
+                    type: Number,
+                    default: 0
+                }
+            },
+            Deductions: {
+                Reason: {
+                    type: String,
+                },
+                Amount: {
+                    type: Number,
+                    default: 0
+                }
+            },
+            NetSalary: {
+                type: Number,
+            },
+    
+        }
+    ],
+    
+    BankDetails: {
+        AccountNumber: {
+            type: String,
+        },
+        BankName: {
+            type: String
+        },
+        AccHolderName: {
+            type: String
+        },
+        BranchName: {
+            type: String
+        }
+    },
+    DeleteFlag: {
+        type: Boolean,
+        require: true,
+    },
 });
 
 EmployeeSchema.plugin(uniqueValidator)
