@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator")
 
 const EmployeeSchema = mongoose.Schema({
-    EmployeeID: {
-        type: Number,
+    Email: {
+        type: String,
         require: true,
         unique: true,
     },

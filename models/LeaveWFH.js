@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 
 const LeaveWFHSchema = mongoose.Schema({
     
-    EmployeeID: {
-        type: Number,
+    Email: {
+        type: String,
         require: true,
     },
     RequestDate: {

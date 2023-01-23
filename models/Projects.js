@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 
 const ProjectsSchema = mongoose.Schema({
     
-    EmployeeID: {
-        type: Number,
-        require: true,
+    Email: {
+        type: String,
+        require: true
     },
     ManagerName: {
         type: String,
