@@ -322,6 +322,16 @@ app.post("/resouces/add", async (req, res) => {
     }
 });
 
+app.get("/resources/all", async (req, res) => {
+    try {
+        await ProjectModel.find({}, (err, result) => {
+            res.status(200).json(result);
+        });
+    } catch {
+        res.status(400).json({ message: err.message })
+    }
+});
+
 app.get("/resouces/hardware/all", async (req, res) => {
     try {
         await ResourceModel.find({ResourcesType: 'Hardware'}, (err, result) => {
@@ -402,7 +412,7 @@ app.post("/projects/add", async (req, res) => {
 
     try {
         await project.save();
-        res.status(200).json({ message: 'Project alocated successful!' });
+        res.status(200).json({ message: 'Project allocated successfully!' });
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
