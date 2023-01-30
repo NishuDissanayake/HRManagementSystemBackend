@@ -17,12 +17,12 @@ app.use(express.json());
 //access to cors
 app.use(
     cors({
-        origin: ["http://localhost:4200" ], //it acsess frontend port 3000
+        origin: ["http://localhost:4200", "http://hrm-system123.s3-website-ap-northeast-1.amazonaws.com/" ], //it acsess frontend port 3000
         //   credentials: true, //it acsess tokens
     })
 );
 
-mongoose.connect('mongodb+srv://HRNishu:68sqAPCI9PGVgjRM@hr.kiuhayc.mongodb.net/hrms?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://HRNishu:68sqAPCI9PGVgjRM@hr.kiuhayc.mongodb.net/hrms-test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
@@ -322,9 +322,19 @@ app.post("/resouces/add", async (req, res) => {
     }
 });
 
-app.get("/resouces/all", async (req, res) => {
+app.get("/resouces/hardware/all", async (req, res) => {
     try {
-        await ResourceModel.find({}, (err, result) => {
+        await ResourceModel.find({ResourcesType: 'Hardware'}, (err, result) => {
+            res.status(200).json(result);
+        });
+    } catch {
+        res.status(400).json({ message: err.message })
+    }
+});
+
+app.get("/resouces/software/all", async (req, res) => {
+    try {
+        await ResourceModel.find({ResourcesType: 'Software'}, (err, result) => {
             res.status(200).json(result);
         });
     } catch {
@@ -333,16 +343,29 @@ app.get("/resouces/all", async (req, res) => {
 });
 
 
-app.get("/resouces/by-email", async (req, res) => {
+
+app.get("/resouces/hardware/by-email", async (req, res) => {
     const email = req.query.email
     try {
-        await ResourceModel.find({Email: email}, (err, result) => {
+        await ResourceModel.find({Email: email, ResourcesType: 'Hardware'}, (err, result) => {
             res.status(200).json(result);
         });
     } catch {
         res.status(400).json({ message: err.message })
     }
 });
+
+app.get("/resouces/software/by-email", async (req, res) => {
+    const email = req.query.email
+    try {
+        await ResourceModel.find({Email: email, ResourcesType: 'Software'}, (err, result) => {
+            res.status(200).json(result);
+        });
+    } catch {
+        res.status(400).json({ message: err.message })
+    }
+});
+
 
 
 app.put("/resouces/update", async (req, res) => {
@@ -423,8 +446,7 @@ app.put("/projects/update", async (req, res) => {
     }
 });
 
-
-app.listen(5000, () => {
+module.exports = app.listen(process.env.PORT, () => {
     console.log('Backend running on port 5000!');
 });
 
