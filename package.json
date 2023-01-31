@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --timeout 10000",
-    "start": "node index.js",
+    "start": "babel node index.js -d dist",
     "dev": "nodemon ./index.js"
   },
   "author": "",
