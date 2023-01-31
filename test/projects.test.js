@@ -12,9 +12,9 @@ before((done) => {
     done();
 })
 
-describe('Projects Test Collection!', () => {
+describe('P. Projects Test Collection!', () => {
 
-    it('Verify Projects are initially 0: ', (done) => {
+    it('P.1 Verify Projects are initially 0 ', (done) => {
 
         chai.request(server)
             .get('/projects/all')
@@ -26,7 +26,7 @@ describe('Projects Test Collection!', () => {
             });
     });
 
-    it('Test projects POST operation: ', (done) => {
+    it('P.2 Test projects POST operation ', (done) => {
 
         let project = {
             Email: 'test@testmail.com',
@@ -47,7 +47,7 @@ describe('Projects Test Collection!', () => {
             });
     });
 
-    it('Test projects GET operation: ', (done) => {
+    it('P.3 Test projects GET operation ', (done) => {
 
         chai.request(server)
             .get('/projects/all')
@@ -59,8 +59,20 @@ describe('Projects Test Collection!', () => {
                 done();
             });
     });
+    
+    it('P.4 Test projects GET by email operation ', (done) => {
 
-    it('Verify Projects are now 1: ', (done) => {
+        chai.request(server)
+            .get('/projects/by-email?email=test@testmail.com')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
+                res.body.length.should.be.eql(1);
+                done();
+            });
+    });
+
+    it('P.5 Verify Projects are now 1 ', (done) => {
 
         chai.request(server)
             .get('/projects/all')

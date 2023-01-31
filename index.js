@@ -51,10 +51,10 @@ app.get("/employee/all", async (req, res) => {
 
 app.get('/employee/by-email', async (req, res) => {
     const email = req.query.Email
-    await EmployeeModel.find({ Email: email }, (err, result) => {
+    await EmployeeModel.findOne({ Email: email }, (err, result) => {
 
         try {
-            res.status(200).json({ employee: result[0] });
+            res.status(200).json(result);
         } catch {
             res.status(400).json({ message: err.message })
         }
@@ -322,9 +322,9 @@ app.post("/resouces/add", async (req, res) => {
     }
 });
 
-app.get("/resources/all", async (req, res) => {
+app.get("/resouces/all", async (req, res) => {
     try {
-        await ProjectModel.find({}, (err, result) => {
+        await ResourceModel.find({}, (err, result) => {
             res.status(200).json(result);
         });
     } catch {

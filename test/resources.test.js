@@ -12,12 +12,12 @@ before((done) => {
     done();
 })
 
-describe('Resources Test Collection!', () => {
+describe('R. Resources Test Collection!', () => {
 
-    it('Verify Rsources are initially 0: ', (done) => {
+    it('R.1 Verify Resources are initially 0 ', (done) => {
 
         chai.request(server)
-            .get('/resources/all')
+            .get('/resouces/all')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('array');
@@ -26,7 +26,7 @@ describe('Resources Test Collection!', () => {
             });
     });
 
-    it('Test resources POST operation: ', (done) => {
+    it('R.2 Test resources POST operation ', (done) => {
 
         let resource= {
             Email: 'test@testmail.com',
@@ -38,7 +38,7 @@ describe('Resources Test Collection!', () => {
         }
 
         chai.request(server)
-            .post('/resources/add')
+            .post('/resouces/add')
             .send(resource)
             .end((err, res) => {
                 res.should.have.status(200);
@@ -46,10 +46,10 @@ describe('Resources Test Collection!', () => {
             });
     });
 
-    it('Test resources GET operation: ', (done) => {
+    it('R.3 Test resources GET operation ', (done) => {
 
         chai.request(server)
-            .get('/resources/all')
+            .get('/resouces/all')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('array');
@@ -59,10 +59,10 @@ describe('Resources Test Collection!', () => {
             });
     });
 
-    it('Verify resources are now 1: ', (done) => {
+    it('R.4 Verify resources are now 1 ', (done) => {
 
         chai.request(server)
-            .get('/resources/all')
+            .get('/resouces/all')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('array');
@@ -71,7 +71,7 @@ describe('Resources Test Collection!', () => {
             });
     });
 
-    it('Add 1 more record for filtering: ', (done) => {
+    it('R.5 Add 1 more record for filtering ', (done) => {
 
         let resource= {
             Email: 'test2@testmail.com',
@@ -83,7 +83,7 @@ describe('Resources Test Collection!', () => {
         }
 
         chai.request(server)
-            .post('/resources/add')
+            .post('/resouces/add')
             .send(resource)
             .end((err, res) => {
                 res.should.have.status(200);
@@ -91,7 +91,7 @@ describe('Resources Test Collection!', () => {
             });
     });
 
-    it('Test Software resources GET by email operation: ', (done) => {
+    it('R.6 Test Software resources GET by email operation ', (done) => {
 
         chai.request(server)
             .get('/resouces/software/by-email?email=test@testmail.com')
@@ -103,7 +103,7 @@ describe('Resources Test Collection!', () => {
             });
     });
 
-    it('Test Hardware resources GET by email operation: ', (done) => {
+    it('R.7 Test Hardware resources GET by email operation ', (done) => {
 
         chai.request(server)
             .get('/resouces/hardware/by-email?email=test2@testmail.com')
@@ -115,7 +115,7 @@ describe('Resources Test Collection!', () => {
             });
     });
 
-    it('Test Hardware resources GET all operation: ', (done) => {
+    it('R.8 Test Hardware resources GET all operation ', (done) => {
 
         chai.request(server)
             .get('/resouces/software/all')
@@ -127,7 +127,7 @@ describe('Resources Test Collection!', () => {
             });
     });
 
-    it('Test Hardware resources GET all operation: ', (done) => {
+    it('R.9 Test Hardware resources GET all operation ', (done) => {
 
         chai.request(server)
             .get('/resouces/hardware/all')
