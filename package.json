@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --timeout 10000",
-    "start": "babel node index.js -d dist",
-    "dev": "nodemon ./index.js"
+    "start": "node index.j",
+    "dev": "nodemon ./index.js",
+    "build": "babel index.js -d dist"
   },
   "author": "",
   "license": "ISC",
