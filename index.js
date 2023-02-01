@@ -22,7 +22,7 @@ app.use(
     })
 );
 
-mongoose.connect('mongodb+srv://HRNishu:68sqAPCI9PGVgjRM@hr.kiuhayc.mongodb.net/hrms-test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://HRNishu:68sqAPCI9PGVgjRM@hr.kiuhayc.mongodb.net/hrms?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

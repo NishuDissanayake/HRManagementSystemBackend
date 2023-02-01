@@ -29,7 +29,7 @@ describe('E. Employees Test Collection!', () => {
     it('E.2 Test employee add operation ', (done) => {
 
         let emp = {
-            Email: 'test9@testmail.com',
+            Email: 'test10@testmail.com',
             FirstName: 'testF',
             LastName: 'testL',
             PhoneNumber: '078654565',
@@ -68,7 +68,7 @@ describe('E. Employees Test Collection!', () => {
     it('E.4 Test employees GET by email operation ', (done) => {
 
         chai.request(server)
-            .get('/employee/by-email?Email=test9@testmail.com')
+            .get('/employee/by-email?Email=test10@testmail.com')
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -94,7 +94,7 @@ describe('E. Employees Test Collection!', () => {
         }
 
         chai.request(server)
-            .put('/employee/update?Email=test9@testmail.com')
+            .put('/employee/update?Email=test10@testmail.com')
             .send({PhoneNumber: '077654565', Designation: 'Tester', BasicSalary: 30000})
             .end((err, res) => {
                 res.should.have.status(200);
