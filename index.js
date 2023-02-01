@@ -17,12 +17,12 @@ app.use(express.json());
 //access to cors
 app.use(
     cors({
-        origin: ["http://localhost:4200", "http://hrm-system123.s3-website-ap-northeast-1.amazonaws.com/" ], //it acsess frontend port 3000
+        origin: ["xxx" ], //it acsess frontend port 3000
         //   credentials: true, //it acsess tokens
     })
 );
 
-mongoose.connect('mongodb+srv://HRNishu:68sqAPCI9PGVgjRM@hr.kiuhayc.mongodb.net/hrms?retryWrites=true&w=majority', {
+mongoose.connect('connection string', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
